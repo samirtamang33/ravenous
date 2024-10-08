@@ -1,0 +1,37 @@
+.SearchBar {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.SearchBar form {
+  display: flex;
+  align-items: center;
+}
+
+.SearchBar input {
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.SearchBar select {
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.SearchBar button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+}
+
+.SearchBar button:hover {
+  background-color: #218838;
+}

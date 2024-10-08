@@ -1,5 +1,6 @@
 import React from "react";
 import BusinessList from "./components/BusinessList/BusinessList";
+import SearchBar from "./components/SearchBar/SearchBar";
 import "./App.css";
 
 const businesses = [
@@ -42,9 +43,17 @@ const businesses = [
 ];
 
 function App() {
+  const handleSearch = (term, location, sortBy) => {
+    console.log(
+      `Search Term: ${term}, Location: ${location}, Sort By: ${sortBy}`
+    );
+    // Here you will eventually call the Yelp API
+  };
+
   return (
     <div className="App">
       <h1>Ravenous</h1>
+      <SearchBar onSearch={handleSearch} />
       <BusinessList businesses={businesses} />
     </div>
   );
