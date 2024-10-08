@@ -1,0 +1,38 @@
+.Business {
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  width: 300px; /* Fixed width for consistency */
+}
+
+.image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.Business img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.Business-information {
+  padding: 15px;
+}
+
+.Business h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.Business-address p {
+  margin: 5px 0;
+}
+
+.rating {
+  font-weight: bold;
+  color: #f39c12; /* Gold color for ratings */
+}

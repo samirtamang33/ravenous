@@ -1,5 +1,5 @@
 import React from "react";
-import "./SearchBar.css";
+import styles from "./SearchBar.module.css";
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -17,7 +17,6 @@ class SearchBar extends React.Component {
     };
   }
 
-  // Handle input change for the search term and location
   handleTermChange = (event) => {
     this.setState({ term: event.target.value });
   };
@@ -26,12 +25,10 @@ class SearchBar extends React.Component {
     this.setState({ location: event.target.value });
   };
 
-  // Handle sorting option change
   handleSortByChange = (event) => {
     this.setState({ sortBy: event.target.value });
   };
 
-  // Handle form submission
   handleSearch = (event) => {
     event.preventDefault();
     const { term, location, sortBy } = this.state;
@@ -51,7 +48,7 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div className="SearchBar">
+      <div className={styles.SearchBar}>
         <form onSubmit={this.handleSearch}>
           <input
             type="text"

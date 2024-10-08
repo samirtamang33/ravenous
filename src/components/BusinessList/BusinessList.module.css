@@ -1,0 +1,13 @@
+.BusinessList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+@media (max-width: 768px) {
+  .BusinessList {
+    flex-direction: column;
+    align-items: center;
+  }
+}
