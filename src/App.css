@@ -2,9 +2,9 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App h1 {
+  background-color: orange;
+  color: white;
 }
 
 @media (prefers-reduced-motion: no-preference) {
