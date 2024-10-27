@@ -25,6 +25,7 @@
   font-weight: 600;
   font-size: 0.83rem;
   transition: color 0.25s;
+  list-style: none;
 }
 
 .SearchBarSortOptions li:hover {
@@ -60,17 +61,17 @@
   text-align: center;
 }
 
-.SearchBarSubmit a {
+.SearchBarSubmit button {
   border-radius: 4px;
   padding: 0.72rem 1.7rem;
   background-color: #cca353;
   color: #ffffff;
   font-weight: 600;
-  text-decoration: none;
   transition: background-color 0.5s;
+  border: 0;
 }
 
-.SearchBarSubmit a:hover {
+.SearchBarSubmit button:hover {
   cursor: pointer;
   background-color: #a7874b;
 }
