@@ -1,74 +1,91 @@
-import React, { useState } from "react";
-import styles from "./SearchBar.module.css";
+import React from "react";
+import "./SearchBar.css";
 
-const sortByOptions = {
-  "Best Match": "best_match",
-  "Highest Rated": "rating",
-  "Most Reviewed": "review_count",
-};
+class SearchBar extends React.Component {
+  constructor(props) {
+    super(props);
 
-const SearchBar = ({ searchYelp }) => {
-  const [term, setTerm] = useState("");
-  const [location, setLocation] = useState("");
-  const [sortBy, setSortBy] = useState("best_match");
+    this.state = {
+      term: "",
+      location: "",
+      sortBy: "best_match",
+    };
 
-  const getSortByClass = (sortByOption) => {
-    if (sortBy === sortByOption) {
-      return styles.active;
+    this.handleTermChange = this.handleTermChange.bind(this);
+    this.handleLocationChange = this.handleLocationChange.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+    this.handleSortByChange = this.handleSortByChange.bind(this);
+
+    this.sortByOptions = {
+      "Best Match": "best_match",
+      "Highest Rated": "rating",
+      "Most Reviewed": "review_count",
+    };
+  }
+
+  getSortByClass(sortByOption) {
+    if (this.state.sortBy === sortByOption) {
+      return "active";
     }
     return "";
-  };
+  }
 
-  const handleSortByChange = (sortByOption) => {
-    setSortBy(sortByOption);
-  };
+  handleSortByChange(sortByOption) {
+    this.setState({ sortBy: sortByOption });
+  }
 
-  const handleTermChange = (event) => {
-    setTerm(event.target.value);
-  };
+  handleTermChange(event) {
+    this.setState({ term: event.target.value });
+  }
 
-  const handleLocationChange = (event) => {
-    setLocation(event.target.value);
-  };
+  handleLocationChange(event) {
+    this.setState({ location: event.target.value });
+  }
 
-  const handleSearch = (event) => {
+  handleSearch(event) {
+    this.props.searchYelp(
+      this.state.term,
+      this.state.location,
+      this.state.sortBy
+    );
+
     event.preventDefault();
-    searchYelp(term, location, sortBy);
-  };
+  }
 
-  const renderSortByOptions = () => {
-    return Object.keys(sortByOptions).map((sortByOption) => {
-      let sortByOptionValue = sortByOptions[sortByOption];
+  renderSortByOptions() {
+    return Object.keys(this.sortByOptions).map((sortByOption) => {
+      let sortByOptionValue = this.sortByOptions[sortByOption];
       return (
         <li
-          className={getSortByClass(sortByOptionValue)}
+          className={this.getSortByClass(sortByOptionValue)}
           key={sortByOptionValue}
-          onClick={() => {
-            handleSortByChange(sortByOptionValue);
-          }}
+          onClick={this.handleSortByChange.bind(this, sortByOptionValue)}
         >
           {sortByOption}
         </li>
       );
     });
-  };
+  }
 
-  return (
-    <div className={styles.SearchBar}>
-      <div className={styles.SearchBarSortOptions}>
-        <ul>{renderSortByOptions()}</ul>
+  render() {
+    return (
+      <div className="SearchBar">
+        <div className="SearchBar-sort-options">
+          <ul>{this.renderSortByOptions()}</ul>
+        </div>
+        <div className="SearchBar-fields">
+          <input
+            placeholder="Search Businesses"
+            onChange={this.handleTermChange}
+          />
+          <input placeholder="Where?" onChange={this.handleLocationChange} />
+        </div>
+        <div className="SearchBar-submit">
+          <a onClick={this.handleSearch}>Let's Go</a>
+        </div>
       </div>
-      <form onSubmit={handleSearch}>
-        <div className={styles.SearchBarFields}>
-          <input placeholder="Search Business" onChange={handleTermChange} />
-          <input placeholder="Where?" onChange={handleLocationChange} />
-        </div>
-        <div className={styles.SearchBarSubmit}>
-          <button type="submit">Let's Go</button>
-        </div>
-      </form>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default SearchBar;
